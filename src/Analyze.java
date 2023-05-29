@@ -49,4 +49,32 @@ public class Analyze implements Runnable {
         }
         return longestWord;
     }
+
+    public String shortestWord(HashMap<String, Integer> words){
+        int min = Integer.MAX_VALUE;
+        int minIndex = 0, flag = 0;
+        Collection<Integer> values = words.values();
+        Iterator<Integer> integerIterator = values.iterator();
+        while (integerIterator.hasNext()){
+            Integer intg = integerIterator.next();
+            if (intg < min){
+                min = intg;
+                minIndex = flag;
+            }
+            flag++;
+        }
+        Set<String> keys = words.keySet();
+        String shortestWord = null;
+        Iterator<String> iterator = keys.iterator();
+        int i = 0;
+        while (iterator.hasNext()){
+            String thisWord = iterator.next();
+            if(i == minIndex){
+                shortestWord = thisWord;
+                break;
+            }
+            i++;
+        }
+        return shortestWord;
+    }
 }
