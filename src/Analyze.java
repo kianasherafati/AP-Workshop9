@@ -77,4 +77,9 @@ public class Analyze implements Runnable {
         }
         return shortestWord;
     }
+
+    public static int getNumberOfWords() {
+        numberOfWords += countNumOfWords(allWords);
+        return numberOfWords;
+    }
 }
