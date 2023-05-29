@@ -99,4 +99,18 @@ public class Analyze implements Runnable {
         }
         return longestWord;
     }
+
+    public static String getShortWord() {
+        int lengthOfShortWord = Integer.MAX_VALUE;
+        String shortestWord = null;
+        Iterator<String> wordIterator = shortWord.iterator();
+        while (wordIterator.hasNext()){
+            String word = wordIterator.next();
+            if (word.length() < lengthOfShortWord){
+                lengthOfShortWord = word.length();
+                shortestWord = word;
+            }
+        }
+        return shortestWord;
+    }
 }
