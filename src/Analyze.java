@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Analyze implements Runnable {
     private static int numberOfWords = 0;
@@ -21,5 +20,33 @@ public class Analyze implements Runnable {
     public static int countNumOfWords(HashMap<String, Integer> words){
         int size = words.size();
         return size;
+    }
+
+    public String longestWord(HashMap<String, Integer> words){
+        Collection<Integer> values = words.values();
+        Iterator<Integer> integerIterator = values.iterator();
+        int max = 0;
+        int maxIndex = 0, flag = 0;
+        while (integerIterator.hasNext()){
+            Integer intg = integerIterator.next();
+            if (intg > max){
+                max = intg;
+                maxIndex = flag;
+            }
+            flag++;
+        }
+        Set<String> keys = words.keySet();
+        String longestWord = null;
+        Iterator<String> iterator = keys.iterator();
+        int i = 0;
+        while (iterator.hasNext()){
+            String thisWord = iterator.next();
+            if(i == maxIndex){
+                longestWord = thisWord;
+                break;
+            }
+            i++;
+        }
+        return longestWord;
     }
 }
