@@ -86,4 +86,17 @@ public class Analyze implements Runnable {
     public static int getLengthOfAllWords() {
         return averageLengthOfAllWords;
     }
+
+    public static String getLongWord() {
+        int lengthOfLongWord = 0;
+        String longestWord = null;
+        Iterator<String> wordIterator = longWord.iterator();
+        while (wordIterator.hasNext()){
+            String word = wordIterator.next();
+            if (word.length() > lengthOfLongWord){
+                longestWord = word;
+            }
+        }
+        return longestWord;
+    }
 }
