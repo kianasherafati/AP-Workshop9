@@ -17,4 +17,9 @@ public class Analyze implements Runnable {
     public int checkAlphabet(char ch){
         return (int) ch - 97;
     }
+
+    public static int countNumOfWords(HashMap<String, Integer> words){
+        int size = words.size();
+        return size;
+    }
 }
