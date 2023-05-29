@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Analyze implements Runnable {
@@ -54,10 +57,8 @@ public class Analyze implements Runnable {
         int min = Integer.MAX_VALUE;
         int minIndex = 0, flag = 0;
         Collection<Integer> values = words.values();
-        Iterator<Integer> integerIterator = values.iterator();
-        while (integerIterator.hasNext()){
-            Integer intg = integerIterator.next();
-            if (intg < min){
+        for (Integer intg : values) {
+            if (intg < min) {
                 min = intg;
                 minIndex = flag;
             }
@@ -112,5 +113,23 @@ public class Analyze implements Runnable {
             }
         }
         return shortestWord;
+    }
+
+    public void readingFiles(String str) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(str));
+        String line;
+        HashMap<String, Integer> words = new HashMap<>();
+        ArrayList<Integer> repeatedWord = new ArrayList<>();
+        int[] countOfDiffChars = new int[26];
+        while ((line = bufferedReader.readLine()) != null){
+            averageLengthOfAllWords += line.length();
+            words.put(line, line.length());
+            allWords.put(line, line.length());
+            for (int i = 0; i < line.length(); i++) {
+                countOfDiffChars[checkAlphabet(line.charAt(i))]++;
+            }
+        }
+        longWord.add(longestWord(words));
+        shortWord.add(shortestWord(words));
     }
 }
