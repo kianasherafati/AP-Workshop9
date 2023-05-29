@@ -82,4 +82,8 @@ public class Analyze implements Runnable {
         numberOfWords += countNumOfWords(allWords);
         return numberOfWords;
     }
+
+    public static int getLengthOfAllWords() {
+        return averageLengthOfAllWords;
+    }
 }
